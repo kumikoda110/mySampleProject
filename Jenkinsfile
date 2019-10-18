@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-                sh 'mvn test checkstyle:check pmd:pmd pmd:cpd' 
+                sh 'mvn test pmd:pmd pmd:cpd' 
             }
         }
         stage('Deploy') {
@@ -24,7 +24,6 @@ pipeline {
             recordIssues enabledForFailure: true, tools: [mavenConsole(), java(), javaDoc()]
             recordIssues enabledForFailure: true, tool: cpd(pattern: '**/target/cpd.xml')
             recordIssues enabledForFailure: true, tool: pmdParser(pattern: '**/target/pmd.xml')
-            recordIssues enabledForFailure: true, tool: checkStyle(reportEncoding: 'UTF-8')
             archive 'target/*.jar'
         }
     }
