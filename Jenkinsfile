@@ -14,6 +14,8 @@ pipeline {
             name: 'moduleName',
             choices: ['mySampleProject']
         )   
+        booleanParam(name: 'isAll', defaultValue: false, description: '是否需要全量（包含clean && build）')     
+        string(name: 'update', defaultValue: '', description: '本次更新内容?')
     }
   
   stages {
