@@ -56,7 +56,6 @@ pipeline {
             }
             steps {
                 echo "开始清除${params.moduleName}模块"      
-                sh "cd ${params.moduleName}"
                 sh "mvn clean install -Dmaven.test" 
             }
         }
