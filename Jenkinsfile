@@ -8,20 +8,12 @@ pipeline {
         maven 'Maven3.8.2'
     }
   parameters {
-        // 提供要部署的服务器选项
-        choice(
-            description: '你需要选择哪个环境进行部署 ?',
-            name: 'env',
-            choices: ['dev','test', 'uat', 'prod']
-        ) 
         // 提供构建的模块选项
         choice(
             description: '你需要选择哪个模块进行构建 ?',
             name: 'moduleName',
             choices: ['mySampleProject']
         )   
-        booleanParam(name: 'isAll', defaultValue: false, description: '是否需要全量（包含clean && build）')     
-        string(name: 'update', defaultValue: '', description: '本次更新内容?')    
     }
   
   stages {
