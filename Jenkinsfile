@@ -67,7 +67,7 @@ pipeline {
             }
             steps {
                 echo "开始打包${params.moduleName}模块"   
-                sh "cd ${params.moduleName} && mvn package -Dmaven.test.skip=true"
+                sh "mvn package -Dmaven.test.skip=true"
                 echo '打包成功'
             }
         }
